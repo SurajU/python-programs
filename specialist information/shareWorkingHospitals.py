@@ -168,14 +168,11 @@ writer.close()
 # Do the same for ZBCs
 ###############################################################################
 
-from selenium import webdriver
-import os
-import time
-import pandas as pd
-import math
-
-os.chdir("C:\\Users\\u1272934\\surfdrive\\webscraping")
-
+try:
+    os.chdir("C:/Users/u1272934/surfdrive/webscraping")
+except:
+    os.chdir("C:/Users/Suraj/surfdrive/webscraping")
+    
 # before getting specialist data, need to get all specialists in NL
 listHosp = pd.read_csv("allZBCsInData.csv", header = 0)
     
