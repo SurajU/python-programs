@@ -58,11 +58,15 @@ time.sleep(timeSleep)
 browser.find_element_by_xpath('//*[@id="calendar"]/table/tbody/tr/td[1]/span[2]/span').click()
 time.sleep(timeSleep)
 
+# book the gym on Mon, Tue, Thur and Fri.
 daysToBookGym = [0,1,3,4]
 dayToday = date.today().weekday()
 
+# the only difference in XPath across days is one number.
 changeXPath = np.array([9,21,45,55])
 
+# choose the correct XPath based on the day it runs. This chooses a slot a week
+# in advance.
 chooseXPath = np.repeat(dayToday,len(daysToBookGym)) == daysToBookGym
 
 finalXPath = '//*[@id="calendar"]/div/div/div/div/div/div/div'+str(changeXPath[chooseXPath])+'/div[1]/div[1]/div'
@@ -71,4 +75,7 @@ browser.find_element_by_xpath(finalXPath).click()
 time.sleep(timeSleep)
 
 browser.find_element_by_xpath('//*[@id="addBookingButton"]').click()
+
+time.sleep(timeSleep)
+browser.quit()
 #   
